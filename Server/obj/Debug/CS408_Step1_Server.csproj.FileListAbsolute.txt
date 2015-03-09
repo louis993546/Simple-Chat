@@ -34,3 +34,12 @@ C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Ste
 C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Step1_Server.Server.resources
 C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Step1_Server.Properties.Resources.resources
 C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Step1_Server.csproj.GenerateResource.Cache
+F:\GitHub\Simple-Chat\Server\bin\Debug\CS408_Step1_Server.exe.config
+F:\GitHub\Simple-Chat\Server\bin\Debug\CS408_Step1_Server.exe
+F:\GitHub\Simple-Chat\Server\bin\Debug\CS408_Step1_Server.pdb
+F:\GitHub\Simple-Chat\Server\obj\Debug\CS408_Step1_Server.csprojResolveAssemblyReference.cache
+F:\GitHub\Simple-Chat\Server\obj\Debug\CS408_Step1_Server.Server.resources
+F:\GitHub\Simple-Chat\Server\obj\Debug\CS408_Step1_Server.Properties.Resources.resources
+F:\GitHub\Simple-Chat\Server\obj\Debug\CS408_Step1_Server.csproj.GenerateResource.Cache
+F:\GitHub\Simple-Chat\Server\obj\Debug\CS408_Step1_Server.exe
+F:\GitHub\Simple-Chat\Server\obj\Debug\CS408_Step1_Server.pdb

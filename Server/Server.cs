@@ -23,6 +23,7 @@ namespace CS408_Step1_Server
             public Socket clisoc;
             //public int attending;
             public List<string> friendsList = new List<string>();
+
             internal void setname(string strclientname)
             {
                 name = strclientname;
@@ -66,6 +67,7 @@ namespace CS408_Step1_Server
         Thread thraccept;
         Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         Socket n;
+        int bufferSize = 64;
 
         public Server()
         {
@@ -117,7 +119,7 @@ namespace CS408_Step1_Server
 
             string new_friends = "@" + c1 + "@" + c2 + "@";
 
-            byte[] buffer = new byte[64];
+            byte[] buffer = new byte[bufferSize];
             buffer = Encoding.Default.GetBytes(new_friends);
             c1_socket.Send(buffer);
             c2_socket.Send(buffer);
@@ -226,7 +228,7 @@ namespace CS408_Step1_Server
             try
             {
                 Socket yeni = (Socket)o;
-                byte[] clientname = new byte[64];
+                byte[] clientname = new byte[bufferSize];
                 yeni.Receive(clientname);
                 string strclientname = Encoding.Default.GetString(clientname);
                 strclientname = strclientname.Substring(0, strclientname.IndexOf("\0"));
@@ -240,7 +242,7 @@ namespace CS408_Step1_Server
                     yeni.Send(send);
                     Time = DateTime.Now;
                     richTextBox1.Text += "-> " + strclientname + " has connected at " + Time + "." + "\r\n";
-                    byte[] sendmessage = new byte[64];
+                    byte[] sendmessage = new byte[bufferSize];
                     string joinedmsg = strclientname + " has joined the conversation.";
                     sendmessage = Encoding.Default.GetBytes(joinedmsg);
                     foreach (client c in clientarray)
@@ -255,7 +257,7 @@ namespace CS408_Step1_Server
                     bool condition = true;
                     while (condition)
                     {
-                        byte[] buffer2 = new byte[64];
+                        byte[] buffer2 = new byte[bufferSize];
                         yeni.Receive(buffer2);
                         string newmessage = Encoding.Default.GetString(buffer2);
                         int pos = clientarray.IndexOf(clientarray.Find(client => client.getsocket() == yeni));
@@ -281,6 +283,7 @@ namespace CS408_Step1_Server
                                     richTextBox1.Text = richTextBox1.Text + "-> " + clientsendername + " sent a message at " + Time + ".\r\n";
                                 }
                             }
+                            bufferSize = 64;
                         }
                         else if (check_symbol(ref newmessage) == 1) // event
                         {
@@ -330,6 +333,7 @@ namespace CS408_Step1_Server
                                     eventsarray[thisEvent].addNotReplyList(c.getname());
                                 }
                             }
+                            bufferSize = 64;
                         }
                         else if (check_symbol(ref newmessage) == 3) // attendance(symbol: &)
                         {
@@ -365,7 +369,7 @@ namespace CS408_Step1_Server
 
                             if (exist == true)
                             {
-                                byte[] buffer = new byte[64];
+                                byte[] buffer = new byte[bufferSize];
                                 buffer = Encoding.Default.GetBytes(newmessage);
                                 foreach (client c in clientarray)
                                 {
@@ -395,17 +399,18 @@ namespace CS408_Step1_Server
                                 //send notificatino back to organizer
                                 //Someone just responded to your event!
                                 string replyTo = eventsarray[eID].getOrganizer();
-                                byte[] buffer20 = new byte[64];
+                                byte[] buffer20 = new byte[bufferSize];
                                 buffer20 = Encoding.Default.GetBytes("#Someone just responded to your event!  ");
                                 Socket iney = searchClient(replyTo);
                                 iney.Send(buffer20);
                             }
                             else
                             {
-                                byte[] buffer356 = new byte[64];
+                                byte[] buffer356 = new byte[bufferSize];
                                 buffer356 = Encoding.Default.GetBytes("#You are not invited  ");
                                 yeni.Send(buffer356);
                             }
+                            bufferSize = 64;
                         }
                         else if (check_symbol(ref newmessage) == 4) // event request(symbol: $)
                         {
@@ -415,7 +420,7 @@ namespace CS408_Step1_Server
                                 //Recieved a request of event lists, so server will send them
                                 //"%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%";
                                 string sendThis = "%" + eventsarray[i].getDate() + "%" + eventsarray[i].getTitle() + "%" + eventsarray[i].getPlace() + "%" + eventsarray[i].getDesc() + "%" + eventsarray[i].getOrganizer() + "%";
-                                byte[] buffer = new byte[64];
+                                byte[] buffer = new byte[bufferSize];
                                 buffer = Encoding.Default.GetBytes(sendThis);
                                 yeni.Send(buffer);
                                 //we forgot to send goingList, notGoingList and notReplyList
@@ -449,11 +454,12 @@ namespace CS408_Step1_Server
                             {
                                 string event_request = "^" + clientarray[i].getname()+ "^";
                                 //MessageBox.Show(event_request);
-                                byte[] buffer = new byte[64];
+                                byte[] buffer = new byte[bufferSize];
                                 buffer = Encoding.Default.GetBytes(event_request);
                                 yeni.Send(buffer);
                             }
                             //friends list and request list should be empty at first
+                            bufferSize = 64;
                         }
                         else if (check_symbol(ref newmessage) == 5) // add friends(symbol: @)
                         {
@@ -477,23 +483,35 @@ namespace CS408_Step1_Server
                             //add to request list
                             //send message to that client immediately
                             //send message to that client
-                            byte[] buffer64 = new byte[64];
+                            byte[] buffer64 = new byte[bufferSize];
                             buffer64 = Encoding.Default.GetBytes("#Someone just sent you a friend request!  ");
                             Socket iney2 = searchClient(addfri[0]);
                             add_friends_2ways(addfri[0], addfri[1]);
                             iney2.Send(buffer64);
                             iney2.Send(buffer2);
-                            }
+                            bufferSize = 64;
+                        }
                         else if (check_symbol(ref newmessage) == 7) // update all client list
                         {
-                            byte[] buffer = new byte[64];
+                            byte[] buffer = new byte[bufferSize];
                             foreach (client c in clientarray)
                             {
                                 c.getsocket().Send(buffer);
                             }
+                            bufferSize = 64;
+                        }
+                        else if (check_symbol(ref newmessage) == 8) //update buffer size
+                        {
+                            string B = newmessage;
+                            B = B.Substring(1);
+                            int i = B.IndexOf("!");
+                            B = B.Substring(0, i);
+                            int bs = Convert.ToInt32(B);
+                            bufferSize = bs;
                         }
                         else
                         {
+                            bufferSize = 64;
                             Time = DateTime.Now;
                             richTextBox1.Text = richTextBox1.Text + "-> " + clientarray[pos].getname() + " has disconnected from the server at " + Time + ".\r\n ";
                             newmessage = clientarray[pos].getname() + " has left the conversation.";
@@ -557,6 +575,10 @@ namespace CS408_Step1_Server
             else if (message.ElementAt(0) == '§') // add new client to all client list
             {
                 return 7;
+            }
+            else if (message.ElementAt(0) == '!') //update buffer size
+            {
+                return 8;
             }
             return 0;
         }

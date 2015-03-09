@@ -37,3 +37,16 @@ C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplica
 C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.csproj.GenerateResource.Cache
 C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.exe
 C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.pdb
+F:\GitHub\Simple-Chat\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe.config
+F:\GitHub\Simple-Chat\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.exe
+F:\GitHub\Simple-Chat\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.pdb
+F:\GitHub\Simple-Chat\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe
+F:\GitHub\Simple-Chat\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.pdb
+F:\GitHub\Simple-Chat\WindowsFormsApplication3\bin\Debug\ClientSide.exe
+F:\GitHub\Simple-Chat\WindowsFormsApplication3\bin\Debug\CS408_Step1_Server.exe
+F:\GitHub\Simple-Chat\WindowsFormsApplication3\bin\Debug\ClientSide.pdb
+F:\GitHub\Simple-Chat\WindowsFormsApplication3\bin\Debug\CS408_Step1_Server.pdb
+F:\GitHub\Simple-Chat\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.csprojResolveAssemblyReference.cache
+F:\GitHub\Simple-Chat\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.Form2.resources
+F:\GitHub\Simple-Chat\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.Properties.Resources.resources
+F:\GitHub\Simple-Chat\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.csproj.GenerateResource.Cache

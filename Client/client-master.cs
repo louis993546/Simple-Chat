@@ -28,6 +28,7 @@ namespace ClientSide
         List<events> EventList = new List<events>();
         List<string> listFriends = new List<string>();
         List<string> listAllClients = new List<string>();
+        int bufferSize = 64;
 
         public Form1()
         {
@@ -157,10 +158,10 @@ namespace ClientSide
                     {
                         c = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                         c.Connect(tbip.Text, Convert.ToInt32(tbport.Text));
-                        byte[] clientname = new byte[64];
+                        byte[] clientname = new byte[bufferSize];
                         clientname = Encoding.Default.GetBytes(tbname.Text);
                         c.Send(clientname);
-                        byte[] serveranswer = new byte[64];
+                        byte[] serveranswer = new byte[bufferSize];
                         c.Receive(serveranswer);
                         string strserveranswer = Encoding.Default.GetString(serveranswer);
                         strserveranswer = strserveranswer.Substring(0, 1);
@@ -203,7 +204,7 @@ namespace ClientSide
                     btnFriends.Enabled = false;
                     button1.Enabled = false;
                     button2.Enabled = false;
-                    byte[] buffer = new byte[64];
+                    byte[] buffer = new byte[bufferSize];
                     string text = "d";
                     buffer = Encoding.Default.GetBytes(text);
                     c.Send(buffer);
@@ -227,7 +228,7 @@ namespace ClientSide
                 condition = true;
                 while (condition)
                 {
-                    byte[] buffer = new byte[64];
+                    byte[] buffer = new byte[bufferSize];
                     c.Receive(buffer);
                     string receivedmessage = Encoding.Default.GetString(buffer);
                     receivedmessage = receivedmessage.Substring(0, receivedmessage.IndexOf("\0"));
@@ -360,7 +361,15 @@ namespace ClientSide
                             addc = B.Substring(1, i2);
                             listAllClients.Add(addc);
                         }
-
+                        else if (check_symbol(ref receivedmessage) == 8) //update buffer size
+                        {
+                            string B = receivedmessage;
+                            B = B.Substring(1);
+                            int i = B.IndexOf("!");
+                            B = B.Substring(0, i);
+                            int bs = Convert.ToInt32(B);
+                            bufferSize = bs;
+                        }
                     }
                 }
             }
@@ -412,6 +421,10 @@ namespace ClientSide
             else if (message.ElementAt(0) == '§') // update all client list
             {
                 return 7;
+            }
+            else if (message.ElementAt(0) == '!') //update buffer size
+            {
+                return 8;
             }
             return 0;
         }
@@ -479,7 +492,7 @@ namespace ClientSide
             {
                 try
                 {
-                    byte[] buffer = new byte[64];
+                    byte[] buffer = new byte[bufferSize];
                     string text = "d";
                     buffer = Encoding.Default.GetBytes(text);
                     c.Send(buffer);

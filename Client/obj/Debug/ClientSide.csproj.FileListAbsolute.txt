@@ -43,3 +43,15 @@ C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSid
 C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\bin\Debug\ClientSide.exe
 C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\bin\Debug\ClientSide.pdb
 C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.editFriends.resources
+F:\GitHub\Simple-Chat\Client\bin\Debug\ClientSide.exe.config
+F:\GitHub\Simple-Chat\Client\bin\Debug\ClientSide.exe
+F:\GitHub\Simple-Chat\Client\bin\Debug\ClientSide.pdb
+F:\GitHub\Simple-Chat\Client\obj\Debug\ClientSide.csprojResolveAssemblyReference.cache
+F:\GitHub\Simple-Chat\Client\obj\Debug\ClientSide.Form1.resources
+F:\GitHub\Simple-Chat\Client\obj\Debug\ClientSide.editFriends.resources
+F:\GitHub\Simple-Chat\Client\obj\Debug\ClientSide.newevent.resources
+F:\GitHub\Simple-Chat\Client\obj\Debug\ClientSide.Properties.Resources.resources
+F:\GitHub\Simple-Chat\Client\obj\Debug\ClientSide.seeevents.resources
+F:\GitHub\Simple-Chat\Client\obj\Debug\ClientSide.csproj.GenerateResource.Cache
+F:\GitHub\Simple-Chat\Client\obj\Debug\ClientSide.exe
+F:\GitHub\Simple-Chat\Client\obj\Debug\ClientSide.pdb

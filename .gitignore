@@ -182,3 +182,7 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+*.exe
+*.exe
+Server/bin/Debug/CS408_Step1_Server.pdb
+*.pdb
